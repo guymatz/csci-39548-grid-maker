@@ -82,5 +82,12 @@ function fillAll(){
 
 // Clear all cells
 function clearAll(){
-    console.log("Clicked Clear All"); // Replace this line with your code.
+    //console.log("Clicked Clear All"); // Replace this line with your code.
+    let table = document.getElementById("grid");
+    for (var i=0, row; row = table.rows[i]; i++ ) {
+        for (var j=0, cell; cell = row.cells[j]; j++ ) {
+            //console.log("HERE??");
+            cell.style.backgroundColor = "";
+        }
+    }
 }
