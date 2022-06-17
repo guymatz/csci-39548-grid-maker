@@ -8,6 +8,8 @@ let table = document.getElementById("grid");
 // Add a row
 function addR() {
     let row = table.insertRow();
+    // if there are no cols, increae it since we kinda
+    // just added one
     if (numCols == 0) {
         numCols = 1;
     }
@@ -24,7 +26,22 @@ function addR() {
 
 // Add a column
 function addC() {
-    console.log("Clicked Add Col"); // Replace this line with your code.
+    // if there are no rows, add one.  this will create a col!
+    if (numRows == 0) {
+        addR();
+        return;
+    }
+    //console.log("Clicked Add Col"); // Replace this line with your code.
+    for ( var i=0, row; row = table.rows[i]; i++ ) {
+        //console.log("Inserting Cell " + row); // Replace this line with your code.
+        var newCell = row.insertCell();
+        //newCell.onclick = "setCellColor()";
+        newCell.onclick = function(event) {
+            this.style.backgroundColor = colorSelected;
+            //console.log(event);
+        }
+    }
+    numCols++;
 }
 
 
