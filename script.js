@@ -44,6 +44,12 @@ function addC() {
 // Remove a row
 function removeR() {
     console.log("Clicked Remove Row"); // Replace this line with your code.
+    table.deleteRow(-1);
+    numRows--;
+    // reset columns to 0 if we delete all rows
+    if (numRows == 0) {
+        numCols = 0;
+    }
 }
 
 // Remove a column
