@@ -1,7 +1,7 @@
 // Declare global variables
 let numRows = 0;
 let numCols = 0;
-let colorSelected;
+let colorSelected = "";  // default to white
 
 let table = document.getElementById("grid");
 
@@ -27,23 +27,19 @@ function addR() {
 // Add a column
 function addC() {
     // if there are no rows, add one.  this will create a col!
+    console.log("Clicked Add Col"); // Replace this line with your code.
     if (numRows == 0) {
         addR();
         return;
     }
-    //console.log("Clicked Add Col"); // Replace this line with your code.
     for ( var i=0, row; row = table.rows[i]; i++ ) {
-        //console.log("Inserting Cell " + row); // Replace this line with your code.
         var newCell = row.insertCell();
-        //newCell.onclick = "setCellColor()";
         newCell.onclick = function(event) {
             this.style.backgroundColor = colorSelected;
-            //console.log(event);
         }
     }
     numCols++;
 }
-
 
 // Remove a row
 function removeR() {
@@ -55,7 +51,7 @@ function removeC() {
     console.log("Clicked Remove Col"); // Replace this line with your code.
 }
 
--// Set global variable for selected color
+// Set global variable for selected color
 function selectColor(){
     colorSelected = document.getElementById("selectedColorId").value;
     console.log(colorSelected);
@@ -63,9 +59,16 @@ function selectColor(){
 
 // Fill all uncolored cells
 function fillU(){
-    console.log("Clicked Fill All Uncolored"); // Replace this line with your code.
+    console.log("Clicked Fill All Uncolored " + colorSelected); // Replace this line with your code.
+    for (var i=0, row; row = table.rows[i]; i++ ) {
+        for (var j=0, cell; cell = row.cells[j]; j++ ) {
+            if (cell.style.backgroundColor == "") {
+                cell.style.backgroundColor = colorSelected;
+                console.log("Clicked Fill All Uncolored"); // Replace this line with your code.
+            }
+        }
+    }
 }
-
 // Fill all cells
 function fillAll(){
     console.log("Clicked Fill All"); // Replace this line with your code.
