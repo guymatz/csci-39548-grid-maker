@@ -71,7 +71,13 @@ function fillU(){
 }
 // Fill all cells
 function fillAll(){
-    console.log("Clicked Fill All"); // Replace this line with your code.
+    //console.log("Clicked Fill All"); // Replace this line with your code.
+    let table = document.getElementById("grid");
+    for (var i=0, row; row = table.rows[i]; i++ ) {
+        for (var j=0, cell; cell = row.cells[j]; j++ ) {
+            cell.style.backgroundColor = colorSelected;
+        }
+    }
 }
 
 // Clear all cells
