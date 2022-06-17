@@ -17,17 +17,18 @@ function addR() {
         let newCell = row.insertCell();
         newCell.onclick = function(event) {
             this.style.backgroundColor = colorSelected;
-            console.log(event);
+            //console.log(event);
         }
     }
-    console.log("Clicked Add Row " + row + " to " + table); // Replace this line with your code.
+    //console.log("Clicked Add Row " + row + " to " + table); // Replace this line with your code.
     numRows++;
+    //console.log("Rows / Cols = " + numRows + " / " + numCols);
 }
 
 // Add a column
 function addC() {
     // if there are no rows, add one.  this will create a col!
-    console.log("Clicked Add Col"); // Replace this line with your code.
+    //console.log("Clicked Add Col"); // Replace this line with your code.
     if (numRows == 0) {
         addR();
         return;
@@ -39,11 +40,12 @@ function addC() {
         }
     }
     numCols++;
+    //console.log("Rows / Cols = " + numRows + " / " + numCols);
 }
 
 // Remove a row
 function removeR() {
-    console.log("Clicked Remove Row"); // Replace this line with your code.
+    //console.log("Clicked Remove Row"); // Replace this line with your code.
     if (numRows == 0) {
         return;
     }
@@ -53,11 +55,12 @@ function removeR() {
     if (numRows == 0) {
         numCols = 0;
     }
+    //console.log("Rows / Cols = " + numRows + " / " + numCols);
 }
 
 // Remove a column
 function removeC() {
-    console.log("Clicked Remove Col"); // Replace this line with your code.
+    //console.log("Clicked Remove Col"); // Replace this line with your code.
     if (numCols == 0) {
         return;
     }
@@ -65,22 +68,30 @@ function removeC() {
         row.deleteCell(-1);
     }
     numCols--;
+    // delete all of the rows if columns is 0
+    if (numCols == 0) {
+        let numRowsNow = numRows;
+        for (let i=0 ; i < numRowsNow; i++) {
+            removeR();
+        }
+    }
+    //console.log("Rows / Cols = " + numRows + " / " + numCols);
 }
 
 // Set global variable for selected color
 function selectColor(){
     colorSelected = document.getElementById("selectedColorId").value;
-    console.log(colorSelected);
+    //console.log(colorSelected);
 }
 
 // Fill all uncolored cells
 function fillU(){
-    console.log("Clicked Fill All Uncolored " + colorSelected); // Replace this line with your code.
+    //console.log("Clicked Fill All Uncolored " + colorSelected); // Replace this line with your code.
     for (var i=0, row; row = table.rows[i]; i++ ) {
         for (var j=0, cell; cell = row.cells[j]; j++ ) {
             if (cell.style.backgroundColor == "") {
                 cell.style.backgroundColor = colorSelected;
-                console.log("Clicked Fill All Uncolored"); // Replace this line with your code.
+                //console.log("Clicked Fill All Uncolored"); // Replace this line with your code.
             }
         }
     }
