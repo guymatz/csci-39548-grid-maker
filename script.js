@@ -44,6 +44,9 @@ function addC() {
 // Remove a row
 function removeR() {
     console.log("Clicked Remove Row"); // Replace this line with your code.
+    if (numRows == 0) {
+        return;
+    }
     table.deleteRow(-1);
     numRows--;
     // reset columns to 0 if we delete all rows
@@ -55,6 +58,13 @@ function removeR() {
 // Remove a column
 function removeC() {
     console.log("Clicked Remove Col"); // Replace this line with your code.
+    if (numCols == 0) {
+        return;
+    }
+    for ( var i=0, row; row = table.rows[i]; i++ ) {
+        row.deleteCell(-1);
+    }
+    numCols--;
 }
 
 // Set global variable for selected color
